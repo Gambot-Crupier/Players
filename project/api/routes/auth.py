@@ -13,7 +13,7 @@ def sign_up():
 
     if not request_data['success']:
         return jsonify({
-            'message': 'Invalid Data'
+            'message': 'Dados inválidos'
         }), 400
 
     json_data = request_data['user']
@@ -25,11 +25,11 @@ def sign_up():
         db.session.commit()
 
         return jsonify({
-            'message': 'User was created sucessfully'
+            'message': 'Usuário criado com sucesso!'
         }), 200
     else:
         return jsonify({
-            'message': 'An error occured, please try again'
+            'message': 'Um erro ocorreu, tente novamente!'
         }), 400
 
 @auth_blueprint.route('/sign-in', methods=['POST'])
@@ -38,7 +38,7 @@ def sign_in():
 
     if not request_data['success']:
         return jsonify({
-            'message': 'Invalid Data'
+            'message': 'Dados inválidos'
         }), 400
     
     json_data = request_data['user']
@@ -47,13 +47,13 @@ def sign_in():
     if user_data is not None:
         if user_data.password == json_data['password']:
             return jsonify({
-                'message': 'Login was made successfully'
+                'message': 'Login feito com sucesso.'
             }), 200
         else:
             return jsonify({
-                'message': 'Passwords do not match'
+                'message': 'Senhas incompatíveis.'
             }), 400
     else:
         return jsonify({
-            'message': 'User not registered on database'
+            'message': 'Usuário não registrado no sistema.'
         }), 400
