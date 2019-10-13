@@ -17,7 +17,9 @@ def create_app(script_info=None):
 
     # register blueprints
     from project.api.routes.auth import auth_blueprint
+    from project.api.routes.user import user_blueprint
     app.register_blueprint(auth_blueprint)
+    app.register_blueprint(user_blueprint)
 
     # shell context for flask cli
     @app.shell_context_processor

@@ -4,10 +4,10 @@ from flask import jsonify
 from flask import request
 from project import db
 from project.api.models import User
-from project.api.schemas.user impot validate_edit_json
+from project.api.schemas.user import validate_edit_json
 user_blueprint = Blueprint('user_blueprint', __name__)
 
-@user_blueprint.route('/edit', METHODS=['PUT'])
+@user_blueprint.route('/edit-user', methods=['PUT'])
 def edit_user():
     request_data = validate_edit_json(request.get_json())
 
@@ -20,10 +20,10 @@ def edit_user():
     user_data = User.query.filter_by(email = json_data['email']).first()
 
     if user_data is not None:
-        user.name = json_data['name']
-        user.username = json_data['username']
-        user.email = json_data['email']
-        user.password = json_data['password']
+        user_data.name = json_data['name']
+        user_data.username = json_data['username']
+        user_data.email = json_data['email']
+        user_data.password = json_data['password']
 
         db.session.commit()
 
