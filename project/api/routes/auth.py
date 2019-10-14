@@ -9,11 +9,12 @@ auth_blueprint = Blueprint('auth_blueprint', __name__)
 
 @auth_blueprint.route('/sign-up', methods=['POST'])
 def sign_up():
-    request_data = validate_signup_json(request.get_json())
+    validate_data = request.get_json()
+    request_data = validate_signup_json(validate_data['user'])
 
     if not request_data['success']:
         return jsonify({
-            'message': 'Dados inválidos'
+            'message': 'Dados inválidos',
         }), 400
 
     json_data = request_data['user']
@@ -34,7 +35,8 @@ def sign_up():
 
 @auth_blueprint.route('/sign-in', methods=['POST'])
 def sign_in():
-    request_data = validate_login_json(request.get_json())
+    validate_data = request.get_json()
+    request_data = validate_login_json(validate_data['user'])
 
     if not request_data['success']:
         return jsonify({
