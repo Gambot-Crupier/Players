@@ -18,6 +18,8 @@ services:
       - DATABASE_TEST_URL=postgres://postgres:postgres@db:5432/players_test
     depends_on:
       - db
+    networks:
+      - gambotnetwork
     
   db:
     container_name: gambot_players_db
@@ -25,7 +27,14 @@ services:
       context: ./project/db
       dockerfile: Dockerfile
     ports:
-      - 5435:5432
+      - 5434:5432
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    networks:
+      - gambotnetwork
+
+networks:
+  gambotnetwork:
+    driver: "bridge"
+    name: gambotnetwork
