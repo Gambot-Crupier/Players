@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import firebase_admin
 
 db = SQLAlchemy()
 
@@ -14,7 +15,8 @@ def create_app(script_info=None):
 
     # set up extensions
     db.init_app(app)
-
+    firebase_admin.initialize_app()
+    
     # register blueprints
     from project.api.routes.auth import auth_blueprint
     from project.api.routes.user import user_blueprint
