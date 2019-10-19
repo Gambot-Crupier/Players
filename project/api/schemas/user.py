@@ -17,9 +17,6 @@ edit_user_schema = {
         },
         "username": {
             "type": "string"
-        },
-        "deviceId": {
-            "type": "string"
         }
     },
     "required": ["email", "password", "name", "username", "deviceId"]

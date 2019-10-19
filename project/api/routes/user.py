@@ -16,7 +16,6 @@ def edit_user():
             'message': 'Invalid Data'
         }), 400
     
-    json_data = request_data['user']
     user_data = User.query.filter_by(email = json_data['email']).first()
 
     if user_data is not None:

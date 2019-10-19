@@ -17,6 +17,9 @@ signup_schema = {
         },
         "username": {
             "type": "string"
+        },
+        "deviceId": {
+            "type": "string"
         }
     },
     "required": ["email", "password", "name", "username"]
@@ -30,6 +33,9 @@ login_schema = {
             "format": "email"
         },
         "password": {
+            "type": "string"
+        },
+        "deviceId": {
             "type": "string"
         }
     },
