@@ -5,6 +5,8 @@ from flask import request
 from project import db
 from project.api.models import User
 from project.api.schemas.user import validate_edit_json
+import sys
+
 user_blueprint = Blueprint('user_blueprint', __name__)
 
 @user_blueprint.route('/edit-user', methods=['PUT'])
@@ -34,3 +36,25 @@ def edit_user():
         return jsonify({
             'message': 'User not registered on database'
         })
+
+
+
+@user_blueprint.route('/get_user_by_id', methods=['GET'])
+def get_user():
+    try:
+        user_id = request.args.get('user_id')
+        user = User.query.filter_by(id=user_id).first()
+
+        response = {
+            "user_id": user.id,
+            "name": user.name,
+            "username": user.username,
+            "email": user.email,
+            "password": user.password,
+            "money": user.money
+        }
+
+        return jsonify(response), 200
+        
+    except:
+        return jsonify({"message": "Error retriving players"}), 500
