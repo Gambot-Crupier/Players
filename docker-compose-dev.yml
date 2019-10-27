@@ -19,6 +19,9 @@ services:
       - GOOGLE_APPLICATION_CREDENTIALS=/src/service-account.json
     depends_on:
       - db
+    networks:
+      - gambotnetwork
+      - default
     
   db:
     container_name: gambot_players_db
@@ -26,7 +29,15 @@ services:
       context: ./project/db
       dockerfile: Dockerfile
     ports:
-      - 5435:5432
+      - 5434:5432
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    networks:
+      - gambotnetwork
+      - default
+
+networks:
+  gambotnetwork:
+    driver: "bridge"
+    name: gambotnetwork
