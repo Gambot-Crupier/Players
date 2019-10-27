@@ -33,3 +33,9 @@ def edit_user():
         return jsonify({
             'message': 'User not registered on database'
         })
+
+@user_blueprint.route('/list_device_id', methods=['POST'])
+def list_device_id():
+    request_data = request.get_json()
+
+    console.log(request_data)
