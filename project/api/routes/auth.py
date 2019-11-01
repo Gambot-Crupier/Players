@@ -49,7 +49,8 @@ def sign_in():
     if user_data is not None:
         if user_data.password == json_data['password']:
             return jsonify({
-                'message': 'Login feito com sucesso.'
+                'message': 'Login feito com sucesso.',
+                'user_id': user_data.id
             }), 200
         else:
             return jsonify({
