@@ -50,16 +50,10 @@ def get_user():
         user = User.query.filter_by(id=user_id).first()
 
         response = {
-            "user_id": user.id,
             "name": user.name,
-            "username": user.username,
-            "email": user.email,
-            "password": user.password,
-            "money": user.money
         }
 
         return jsonify(response), 200
         
     except:
         return jsonify({"message": "Error retriving players"}), 500
->>>>>>> ca3ffe1e66b1e8f33704d2f18041f757097b9137
