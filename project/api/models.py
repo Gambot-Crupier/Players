@@ -10,4 +10,5 @@ class User(db.Model):
     username = db.Column(db.String(255), nullable = False)
     email = db.Column(db.String(255), unique = True, nullable = False)
     password = db.Column(db.String(255), nullable = False)
+    deviceId = db.Column(db.String(255), nullable = False)
     money = db.Column(db.Float)

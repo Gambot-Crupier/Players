@@ -1,9 +1,11 @@
 from flask.cli import FlaskGroup
 from project import create_app, db
 from project.api.models import User
+import firebase_admin
 
 
 app = create_app()
+firebase_admin.initialize_app()
 
 cli = FlaskGroup(create_app=create_app)
 
