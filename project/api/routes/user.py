@@ -18,7 +18,6 @@ def edit_user():
             'message': 'Invalid Data'
         }), 400
     
-    json_data = request_data['user']
     user_data = User.query.filter_by(email = json_data['email']).first()
 
     if user_data is not None:
@@ -38,6 +37,11 @@ def edit_user():
         })
 
 
+@user_blueprint.route('/list_device_id', methods=['POST'])
+def list_device_id():
+    request_data = request.get_json()
+
+    console.log(request_data)
 
 @user_blueprint.route('/get_user_by_id', methods=['GET'])
 def get_user():
@@ -46,12 +50,7 @@ def get_user():
         user = User.query.filter_by(id=user_id).first()
 
         response = {
-            "user_id": user.id,
             "name": user.name,
-            "username": user.username,
-            "email": user.email,
-            "password": user.password,
-            "money": user.money
         }
 
         return jsonify(response), 200

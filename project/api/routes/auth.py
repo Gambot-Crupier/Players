@@ -18,7 +18,7 @@ def sign_up():
         }), 400
 
     json_data = request_data['user']
-    user_data = User(name = json_data['name'], email = json_data['email'], 
+    user_data = User(name = json_data['name'], email = json_data['email'], deviceId = json_data['deviceId'], 
                      username = json_data['username'], password = json_data['password'])
 
     if user_data is not None:

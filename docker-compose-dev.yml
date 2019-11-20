@@ -14,8 +14,9 @@ services:
       - FLASK_APP=project/__init__.py
       - FLASK_ENV=development
       - APP_SETTINGS=project.config.DevelopmentConfig
-      - DATABASE_URL=postgres://postgres:postgres@gambot_players_db:5432/players_dev
-      - DATABASE_TEST_URL=postgres://postgres:postgres@gambot_players_db:5432/players_test
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/players_dev
+      - DATABASE_TEST_URL=postgres://postgres:postgres@db:5432/players_test
+      - GOOGLE_APPLICATION_CREDENTIALS=/src/service-account.json
     depends_on:
       - db
     networks:

@@ -19,7 +19,7 @@ edit_user_schema = {
             "type": "string"
         }
     },
-    "required": ["email", "password", "name", "username"]
+    "required": ["email", "password", "name", "username", "deviceId"]
 }
 
 def validate_edit_json(data):
