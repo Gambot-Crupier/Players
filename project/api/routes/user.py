@@ -37,12 +37,6 @@ def edit_user():
         })
 
 
-@user_blueprint.route('/list_device_id', methods=['POST'])
-def list_device_id():
-    request_data = request.get_json()
-
-    console.log(request_data)
-
 @user_blueprint.route('/get_user_by_id', methods=['GET'])
 def get_user():
     try:
@@ -57,3 +51,5 @@ def get_user():
         
     except:
         return jsonify({"message": "Error retriving players"}), 500
+
+
