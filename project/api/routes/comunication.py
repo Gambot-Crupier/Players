@@ -28,7 +28,7 @@ def post_player_id():
 @comunication_blueprint.route('/post_ignore_player', methods=['POST'])
 def post_ignore_player():
     try:
-        data = UserCommunication(player_id=None)
+        data = UserCommunication(player_id=-5)
         db.session.add(data)
         db.session.commit()
 
@@ -42,7 +42,7 @@ def post_ignore_player():
 @comunication_blueprint.route('/post_end_recognition', methods=['POST'])
 def post_end_recognition():
     try:
-        data = UserCommunication(player_id=-1)
+        data = UserCommunication(player_id=-10)
         db.session.add(data)
         db.session.commit()
 
