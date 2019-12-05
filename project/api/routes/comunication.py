@@ -58,7 +58,15 @@ def get_player_id():
     try:
         player_data = UserCommunication.query.all()
 
-        return jsonify({'player_id': str(player_data[-1].player_id)}), 200
+        print('hmmmm', file=sys.stderr)
+        print(player_data, file= sys.stderr)
+
+        if len(player_data) is not 0:
+            return jsonify({'player_id': str(player_data[-1].player_id)}), 200
+        else:
+            return jsonify({
+                'player_id': '-1'
+            }), 200
 
     except Exception as e:
         return jsonify({'message': 'Erro ao tentar recuperar Id de jogador.', 'error': e}), 500
